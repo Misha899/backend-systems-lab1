@@ -9,7 +9,6 @@ if (isset($_GET['teacher_id'])) {
             JOIN lesson_teacher ON lesson.ID_Lesson = lesson_teacher.FID_Lesson1 
             WHERE lesson_teacher.FID_Teacher = :tid";
     
-    // Тут використовуємо іменований маркер :tid замість знака питання (інший спосіб PDO)
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['tid' => $teacherId]);
     $schedule = $stmt->fetchAll();
